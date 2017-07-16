@@ -16,6 +16,7 @@ import copy
 import math
 import random
 import numpy as np
+import os
 
 
 class RL4SRD(object):
@@ -246,6 +247,8 @@ class RL4SRD(object):
             self.W += self.floatLearningRate * self.W_derive
 
     def Prediction(self, listInput, boolTest):
+        if not os.path.exists(self.folder + '/ranking'):
+            os.makedirs(self.folder + '/ranking')
         floatSumResultScore = 0.0
         dictResult = {}
         for query in listInput:
